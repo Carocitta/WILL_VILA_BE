@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "video")
@@ -13,7 +14,9 @@ public class Video {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @NotEmpty
     private String title;
+    private String artist;
     private int date;
     private String url;
 
@@ -34,6 +37,14 @@ public class Video {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    
+    public String getArtist() {
+        return this.artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public int getDate() {

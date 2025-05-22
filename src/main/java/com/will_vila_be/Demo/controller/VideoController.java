@@ -1,16 +1,14 @@
 package com.will_vila_be.Demo.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.will_vila_be.Demo.model.Video;
 import com.will_vila_be.Demo.service.VideoService;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -24,8 +22,27 @@ public class VideoController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createVideo(@RequestBody Video video) {
+    public ResponseEntity<Object> createVideo(@Valid @RequestBody Video video) {
         return videoService.createVideo(video);
     }
 
+    @GetMapping
+    public List<Video> getAllVideos() {
+        return videoService.getAllVideos();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getVideoById(@PathVariable int id) {
+        return videoService.getVideoById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateVideo(@PathVariable int id, @Valid @RequestBody Video video) {
+        return videoService.updateVideo(id, video);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteVideo(@PathVariable int id) {
+        return videoService.deleteVideo(id);
+    }
 }
