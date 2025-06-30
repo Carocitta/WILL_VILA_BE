@@ -105,6 +105,6 @@ Aún no implementado. El plan de testing incluye:
 
 ## 👨‍💻 Autor
 
-Proyecto desarrollado por **[Tu Nombre]** como entrega final del bootcamp de desarrollo web full-stack.
+Proyecto desarrollado por Carolina Mas como entrega final del bootcamp de desarrollo web full-stack.
 
 ---
